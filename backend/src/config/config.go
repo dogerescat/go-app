@@ -15,7 +15,12 @@ type ConfigList struct {
 
 var Config ConfigList
 
+func init() {
+	LoadConfig()
+}
+
 func LoadConfig() {
+	fmt.Println("LoadConfig")
 	cfg, err := ini.Load("config.ini")
 	if err != nil {
 		fmt.Println("error")
