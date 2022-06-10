@@ -15,6 +15,6 @@ ENV MYSQL_PASSWORD=shutoaaa
 ENV MYSQL_ROOT_PASSWORD=root
 ENV MYSQL_DATABASE=mysql-db
 
-CMD ["mysqld", "--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
+CMD ["mysqld"]
 
 EXPOSE 3306

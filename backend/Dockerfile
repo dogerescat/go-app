@@ -1,10 +1,10 @@
-FROM golang:1.15.2-alpine
+FROM golang:1.18-alpine
 
 RUN apk update && apk add git
 
 COPY ./src /app/
 WORKDIR /app
-
+RUN go mod tidy
 #RUN go build -o main . 
 RUN go build -o main
 

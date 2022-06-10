@@ -1,0 +1,34 @@
+version: '3'
+services:
+  db:
+    build: ./db
+    env_file: ./db/sql.env
+    environment:
+      TZ: 'Asia/Tokyo'
+    ports: 
+      - 3306:3306
+    container_name: db
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes: 
+      - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./db/sql:/docker-entrypoint-initdb.d
+    networks: 
+      - goapp
+
+  api:
+    build: ./backend
+    ports:
+      - 8080:8080
+    volumes:
+      - ./backend/src:/app
+    working_dir: /app
+    tty: true
+    container_name: api
+    depends_on: 
+      - db
+    command: go run main.go
+    networks: 
+      - goapp
+networks: 
+    goapp:
+      external: true

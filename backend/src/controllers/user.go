@@ -25,7 +25,6 @@ func (uc *UserController) Create(c *gin.Context) {
 		c.JSON(404, gin.H{"result": "false"})
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{"result": "true"})
 }
 
 func (uc *UserController) Read(c *gin.Context) {
