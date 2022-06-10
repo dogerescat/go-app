@@ -20,7 +20,6 @@ func init() {
 }
 
 func LoadConfig() {
-	fmt.Println("LoadConfig")
 	cfg, err := ini.Load("config.ini")
 	if err != nil {
 		fmt.Println("error")
